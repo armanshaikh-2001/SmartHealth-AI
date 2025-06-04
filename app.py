@@ -1,7 +1,4 @@
-"""
-SmartHealth AI – Interactive Medical Summary Generator
-Flask Backend Implementation
-"""
+
 
 import os
 import re
@@ -14,11 +11,11 @@ from flask_cors import CORS
 import fitz
 from PIL import Image
 import matplotlib
-matplotlib.use('Agg')  # Use non-GUI backend to suppress warnings
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import qrcode
-import pytesseract  # For OCR from images
-import cv2  # For video processing (placeholder)
+import pytesseract 
+import cv2  
 import numpy as np
 from flask import send_file
 import json
@@ -29,7 +26,6 @@ import uuid
 from storage import save_user_data
 from ml_model import predict_condition
 
-# Ensure temp directory exists
 TEMP_DIR = os.path.join(os.path.dirname(__file__), 'temp_reports')
 os.makedirs(TEMP_DIR, exist_ok=True)
 
@@ -72,7 +68,7 @@ def get_temp_dir():
     os.makedirs(temp_dir, exist_ok=True)
     return temp_dir
 
-# Dummy medical knowledge base (in a real app, this would be a proper database)
+# Dummy medical knowledge base
 MEDICAL_KNOWLEDGE = {
     "conditions": {
         "common_cold": {
