@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHealth AI - Medical Summary Generator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>SmartHealth AI <span>Interactive Medical Summary Generator</span></h1>
+            </div>
+            <div class="header-icons">
+                <i class="fas fa-user-md"></i>
+                <i class="fas fa-pills"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="form-container">
+                <section class="form-section">
+                    <h2><i class="fas fa-user-circle"></i> Personal Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name*</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender">
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">Prefer not to say</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bloodGroup">Blood Group</label>
+                            <select id="bloodGroup" name="bloodGroup">
+                                <option value="">Select</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                        <label for="ethnicity">Ethnicity</label>
+                        <select id="ethnicity" name="ethnicity">
+                            <option value="">Select</option>
+                            <option value="asian">Asian</option>
+                            <option value="black">Black</option>
+                            <option value="hispanic">Hispanic</option>
+                            <option value="white">White</option>
+                            <option value="mixed">Mixed</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2><i class="fas fa-upload"></i> Medical Reports</h2>
+                    <div class="upload-grid">
+                        <div class="upload-card" id="bloodReportUpload">
+                            <div class="upload-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <h3>Blood Report</h3>
+                            <p>Upload PDF, PNG, JPG (max 50MB)</p>
+                            <input type="file" id="bloodReport" name="files" accept=".pdf,.png,.jpg,.jpeg,.mp4" multiple style="display: none;">
+                            <button class="upload-btn" onclick="document.getElementById('bloodReport').click()">Choose File</button>
+                            <div class="drop-area">or drag and drop files here</div>
+                            <div class="file-list" id="bloodReportFiles"></div>
+                        </div>
+
+                        <div class="upload-card" id="medicalReportUpload">
+                            <div class="upload-icon">
+                                <i class="fas fa-file-medical"></i>
+                            </div>
+                            <h3>Medical Report</h3>
+                            <p>Upload PDF, PNG, JPG (max 50MB)</p>
+                            <input type="file" id="medicalReport" name="files" accept=".pdf,.png,.jpg,.jpeg,.mp4" multiple style="display: none;">
+                            <button class="upload-btn" onclick="document.getElementById('medicalReport').click()">Choose File</button>
+                            <div class="drop-area">or drag and drop files here</div>
+                            <div class="file-list" id="medicalReportFiles"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2><i class="fas fa-tags"></i> Symptoms & Conditions</h2>
+                    
+                    <div class="tag-section">
+                        <h3>Common Conditions</h3>
+                        <div class="tag-container" id="conditionsContainer">
+                            <!-- Tags will be added by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="tag-section">
+                        <h3>Symptoms</h3>
+                        <div class="tag-container" id="symptomsContainer">
+                            <!-- Tags will be added by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="tag-section">
+                        <h3>Affected Body Parts</h3>
+                        <div class="tag-container" id="bodyPartsContainer">
+                            <!-- Tags will be added by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2><i class="fas fa-comment-medical"></i> Health Description</h2>
+                    <textarea id="description" name="description" placeholder="Describe your health concerns in detail..."></textarea>
+                </section>
+                <button class="emergency-btn" onclick="window.open('tel:911')">
+                    <i class="fas fa-ambulance"></i> Emergency Help
+                    </button>
+                <button class="submit-btn" id="submitBtn">
+                    <span>Generate Health Summary</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-photo">
+                        <img src="/static/images/user-placeholder.jpg" alt="User Photo" id="userPhoto">
+                        <button class="upload-photo-btn" id="uploadPhotoBtn">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+                    </div>
+                    <h2 id="profileName">Your Name</h2>
+                    <p class="profile-email" id="profileEmail">email@example.com</p>
+                </div>
+
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span id="profilePhone">Not provided</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-venus-mars"></i>
+                        <span id="profileGender">Not specified</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-tint"></i>
+                        <span id="profileBloodGroup">Not specified</span>
+                    </div>
+                </div>
+
+                <div class="profile-summary" id="summaryResults">
+                    <div class="summary-placeholder">
+                        <i class="fas fa-stethoscope"></i>
+                        <p>Complete the form to generate your personalized health summary</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

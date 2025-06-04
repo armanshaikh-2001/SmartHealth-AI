@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHealth AI - Your Health Summary</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .embedded-results { 
+            /* Styles for results shown in profile card */
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .standalone-results {
+            /* Styles for full-page results */
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>SmartHealth AI <span>Your Health Summary</span></h1>
+            </div>
+        </header>
+
+        <main class="result-content">
+            <div class="result-card">
+                <div class="user-info">
+                    <img src="{{ url_for('static', filename='images/user-placeholder.jpg') }}" alt="User" class="result-user-img">
+                    <div>
+                        <h2>{{ summary.user_info.name }}</h2>
+                        <p class="result-date">{{ summary.user_info.timestamp|datetimeformat }}</p>                    </div>
+                </div>
+
+                {% if summary.possible_conditions %}
+                <div class="result-section">
+                    <h3><i class="fas fa-diagnoses"></i> Possible Conditions</h3>
+                    <div class="condition-tags">
+                        {% for condition in summary.possible_conditions %}
+                        <span class="condition-tag">{{ condition }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if summary.health_summary.first_aid %}
+                <div class="result-section">
+                    <h3><i class="fas fa-first-aid"></i> First Aid Recommendations</h3>
+                    <ul>
+                        {% for item in summary.health_summary.first_aid %}
+                        <li><i class="fas fa-check-circle"></i> {{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if summary.health_summary.lifestyle_recommendations %}
+                <div class="result-section">
+                    <h3><i class="fas fa-heartbeat"></i> Lifestyle Recommendations</h3>
+                    <ul>
+                        {% for item in summary.health_summary.lifestyle_recommendations %}
+                        <li><i class="fas fa-check-circle"></i> {{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if summary.health_summary.dietary_suggestions %}
+                <div class="result-section">
+                    <h3><i class="fas fa-utensils"></i> Dietary Suggestions</h3>
+                    <ul>
+                        {% for item in summary.health_summary.dietary_suggestions %}
+                        <li><i class="fas fa-check-circle"></i> {{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if summary.health_summary.recommended_specialist %}
+                <div class="result-section">
+                    <h3><i class="fas fa-user-md"></i> Recommended Specialist</h3>
+                    <p>{{ summary.health_summary.recommended_specialist }}</p>
+                </div>
+                {% endif %}
+                <a href="{{ summary.pdf_url }}" class="download-btn">
+                    <i class="fas fa-file-pdf"></i> Download Full Report
+                </a>
+
+                {% if summary.session_id %}
+                <a href="https://telemed.example.com/join/{{ summary.session_id }}" 
+                class="tele-btn">
+                <i class="fas fa-video"></i> Consult Doctor
+                </a>
+                {% endif %}
+                <div class="result-actions">
+                    <button class="print-btn" onclick="window.print()">
+                        <i class="fas fa-print"></i> Print Summary
+                    </button>
+                    <button class="home-btn" onclick="window.location.href='/'">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

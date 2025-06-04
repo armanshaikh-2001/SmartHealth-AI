@@ -1,0 +1,126 @@
+{
+  "conditions": {
+    "common_cold": {
+      "name": "Common Cold",
+      "symptoms": ["cough", "sore_throat", "runny_nose", "sneezing", "mild_fever"],
+      "body_parts": ["head", "throat", "nose"],
+      "first_aid": [
+        "Rest and drink plenty of fluids",
+        "Use over-the-counter cold medicines for symptom relief",
+        "Gargle with warm salt water for sore throat"
+      ],
+      "lifestyle": [
+        "Get adequate sleep to boost immune system",
+        "Wash hands frequently to prevent spread",
+        "Avoid close contact with others to prevent transmission"
+      ],
+      "diet": [
+        "Warm liquids like herbal tea or broth",
+        "Vitamin C rich foods (oranges, bell peppers)",
+        "Zinc-rich foods (nuts, seeds, legumes)"
+      ],
+      "specialist": "General Physician"
+    },
+    "migraine": {
+      "name": "Migraine",
+      "symptoms": ["headache", "nausea", "sensitivity_to_light", "aura"],
+      "body_parts": ["head"],
+      "first_aid": [
+        "Rest in a quiet, dark room",
+        "Apply cold compress to forehead",
+        "Over-the-counter pain relievers (ibuprofen, acetaminophen)"
+      ],
+      "lifestyle": [
+        "Identify and avoid migraine triggers",
+        "Maintain regular sleep schedule",
+        "Practice stress-reduction techniques"
+      ],
+      "diet": [
+        "Stay hydrated",
+        "Avoid known food triggers (often chocolate, cheese, caffeine)",
+        "Eat regular meals to maintain blood sugar"
+      ],
+      "specialist": "Neurologist"
+    },
+    "gastritis": {
+      "name": "Gastritis",
+      "symptoms": ["stomach_pain", "bloating", "nausea", "indigestion", "loss_of_appetite"],
+      "body_parts": ["stomach"],
+      "first_aid": [
+        "Avoid foods that irritate stomach",
+        "Antacids may provide temporary relief",
+        "Small, frequent meals instead of large meals"
+      ],
+      "lifestyle": [
+        "Reduce stress",
+        "Avoid alcohol and smoking",
+        "Don't lie down immediately after eating"
+      ],
+      "diet": [
+        "Bland, non-acidic foods",
+        "Probiotic-rich foods (yogurt, kefir)",
+        "Avoid spicy, fried, or fatty foods"
+      ],
+      "specialist": "Gastroenterologist"
+    },
+    "hypertension": {
+      "name": "Hypertension",
+      "symptoms": ["headache", "dizziness", "blurred_vision", "shortness_of_breath"],
+      "body_parts": ["head", "chest"],
+      "first_aid": [
+        "Sit down and rest",
+        "Monitor blood pressure if possible",
+        "Take prescribed medications"
+      ],
+      "lifestyle": [
+        "Regular exercise (30 minutes daily)",
+        "Reduce sodium intake",
+        "Maintain healthy weight"
+      ],
+      "diet": [
+        "DASH diet (fruits, vegetables, whole grains)",
+        "Low-fat dairy products",
+        "Limit alcohol consumption"
+      ],
+      "specialist": "Cardiologist"
+    },
+    "asthma": {
+      "name": "Asthma",
+      "symptoms": ["shortness_of_breath", "wheezing", "chest_tightness", "cough"],
+      "body_parts": ["chest"],
+      "first_aid": [
+        "Use rescue inhaler as prescribed",
+        "Sit upright and try to remain calm",
+        "Practice pursed-lip breathing"
+      ],
+      "lifestyle": [
+        "Identify and avoid triggers (dust, pollen, smoke)",
+        "Get vaccinated for flu and pneumonia",
+        "Monitor air quality and pollen counts"
+      ],
+      "diet": [
+        "Foods rich in omega-3 fatty acids",
+        "Vitamin D rich foods",
+        "Avoid sulfite-containing foods"
+      ],
+      "specialist": "Pulmonologist"
+    }
+  },
+  "symptoms": {
+    "headache": ["migraine", "tension_headache", "sinusitis", "hypertension"],
+    "cough": ["common_cold", "flu", "bronchitis", "asthma"],
+    "sore_throat": ["common_cold", "strep_throat", "tonsillitis"],
+    "stomach_pain": ["gastritis", "food_poisoning", "ibs"],
+    "nausea": ["migraine", "gastritis", "food_poisoning"],
+    "fatigue": ["anemia", "depression", "chronic_fatigue"],
+    "fever": ["common_cold", "flu", "infection"],
+    "shortness_of_breath": ["asthma", "hypertension", "anemia"],
+    "dizziness": ["hypertension", "migraine", "anemia"]
+  },
+  "body_parts": {
+    "head": ["migraine", "tension_headache", "sinusitis", "hypertension"],
+    "throat": ["common_cold", "strep_throat", "tonsillitis"],
+    "stomach": ["gastritis", "food_poisoning", "ibs"],
+    "chest": ["asthma", "hypertension", "pneumonia"]
+  }
+}

@@ -1,0 +1,7 @@
+flask
+flask-cors
+PyMuPDF
+pillow
+pytesseract
+opencv-python
+numpy

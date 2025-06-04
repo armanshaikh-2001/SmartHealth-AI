@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error - SmartHealth AI</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f8f9fa;
+            color: #dc3545;
+            text-align: center;
+            padding: 50px;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 { color: #dc3545; }
+        .error-details {
+            text-align: left;
+            background: #fff8f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        .home-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #00c6a7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>⚠️ Processing Error</h1>
+        <p>We encountered an issue generating your health summary.</p>
+        
+        <div class="error-details">
+            <strong>Error Message:</strong><br>
+            {{ error }}
+        </div>
+        
+        <p>Please try again or contact support if the problem persists.</p>
+        <a href="/" class="home-btn">Return to Home</a>
+    </div>
+</body>
+</html>
